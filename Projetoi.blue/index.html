@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>i.blue - Gestão Inteligente de Água</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+    <img src="imagens/logo.png" alt="Logo i.blue">
+    <h1>i.blue - Sistema Inteligente de Abastecimento de Água</h1>
+</header>
+
+<nav>
+    <button class="tab-button active" onclick="showTab('apresentacao')">Apresentação</button>
+    <button class="tab-button" onclick="showTab('suporte')">Suporte</button>
+    <button class="tab-button" onclick="showTab('contato')">Contato</button>
+</nav>
+
+<div class="container">
+
+    <!-- APRESENTAÇÃO -->
+    <section id="apresentacao" class="section active">
+        <h2>Apresentação do Projeto</h2>
+        <p>A <strong>i.blue</strong> é uma plataforma de inteligência hídrica que revoluciona a forma como cidades lidam com o abastecimento e desperdício de água. Com sensores, IA e visualização em tempo real, detectamos falhas e pontos críticos com precisão milimétrica.</p>
+        <p>Nosso foco é a automação sustentável, usando aprendizado de máquina e integração com redes municipais para reduzir o desperdício em até <strong>37%</strong>.</p>
+
+        <div class="cidade-input">
+            <label for="cidade">Digite sua cidade:</label>
+            <input type="text" id="cidade" placeholder="Ex: São Paulo" oninput="mostrarGrafico(this.value)">
+        </div>
+
+        <div class="central-acesso">
+            <button onclick="irParaCentral()" class="botao-central">
+                <img src="imagens/imageabastecimento.png" alt="Central de Abastecimento" class="icon-img" />
+                Acessar Central de Abastecimento
+            </button>
+        </div>
+
+        <div id="grafico-container">
+            <h3>Índice de Desperdício</h3>
+            <img id="grafico" src="imagens/image2.png" alt="Gráfico de desperdício" />
+            <!-- 🔴 Substitua por um gráfico real ou dinâmico futuramente -->
+        </div>
+    </section>
+
+    <!-- SUPORTE -->
+    <section id="suporte" class="section">
+        <h2>Suporte e Atendimento</h2>
+        <p>Suporte 24h com profissionais técnicos e especialistas em automação hídrica. Atendimento via chat, e-mail e WhatsApp empresarial com SLA garantido.</p>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="section">
+        <h2>Fale Conosco</h2>
+        <p><strong>Email:</strong> <a href="mailto:support@iblue.com">@blue_wave.unss</p>
+        <p><strong>Telefone:</strong> (11) 98765-4321</p>
+    </section>
+
+</div>
+
+<footer>
+    &copy; 2025 i.blue - Todos os direitos reservados
+</footer>
+
+<script>
+    function showTab(tabId) {
+        const sections = document.querySelectorAll('.section');
+        const buttons = document.querySelectorAll('.tab-button');
+        sections.forEach(section => section.classList.remove('active'));
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        document.getElementById(tabId).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    function irParaCentral() {
+        alert("Redirecionando para a central de abastecimento... (Simulado)");
+    }
+
+    function mostrarGrafico(cidade) {
+        const grafico = document.getElementById('grafico');
+        if (cidade.length > 2) {
+            // Simula uma mudança visual. Em um projeto real, carregaria um gráfico por cidade.
+            grafico.src = "imagens/lsa-" + cidade.toLowerCase().replace(/\s/g, '') + ".png";
+        } else {
+            grafico.src = "imagens/sao" + cidade.toLowerCase().replace(/\s/g, '') + ".png";
+
+        }
+    }
+</script>
+
+</body>
+</html>
